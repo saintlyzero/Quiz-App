@@ -21,7 +21,6 @@ var validator = (function($) {
         max: 'input is too long',
         number_min: 'too low',
         number_max: 'too high',
-        url: 'invalid URL',
         number: 'not a number',
         email: 'email address is invalid',
         email_repeat: 'emails do not match',
@@ -182,18 +181,18 @@ var validator = (function($) {
                 return false;
             }
         },
-        url: function(a) {
-            // minimalistic URL validation
-            function testUrl(url) {
-                return /^(https?:\/\/)?([\w\d\-_]+\.+[A-Za-z]{2,})+\/?/.test(url);
-            }
-            if (!testUrl(a)) {
-                console.log(a);
-                alertTxt = a ? message.url : message.empty;
-                return false;
-            }
-            return true;
-        },
+        // url: function(a) {
+        //     // minimalistic URL validation
+        //     function testUrl(url) {
+        //         return /^(https?:\/\/)?([\w\d\-_]+\.+[A-Za-z]{2,})+\/?/.test(url);
+        //     }
+        //     if (!testUrl(a)) {
+        //         console.log(a);
+        //         alertTxt = a ? message.url : message.empty;
+        //         return false;
+        //     }
+        //     return true;
+        // },
         hidden: function(a) {
             if (lengthRange && a.length < lengthRange[0]) {
                 alertTxt = message.min;
