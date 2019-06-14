@@ -1,157 +1,108 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-
-	<title>Log In &amp; Sign Up Form </title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow" />
+    <title>Create a Flat Login/Sign up Page with Validator jQuery Plugin</title>
+    <link href="css/style.css" media="screen" rel="stylesheet">
+    <link href="css/reset.css" media="screen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,700italic,800italic,400,300,600,800" rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
-	<header class="cd-main-header">
-		<nav class="cd-main-nav js-main-nav">
-			<ul class="cd-main-nav__list js-signin-modal-trigger">
-				<!-- inser more links here -->
-				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Sign in</a>
-				</li>
-				<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+    <div class="container">
+        <div class="flat-design-form">
+            <ul class="tabs">
+                <li><a class="active" href="#login" id="login-tab"><span id="login_icon"></span> Login</a></li>
+                <li><a href="#register" id="register-tab"><span id="signup_icon"></span> Register</a></li>
+            </ul>
+            <div class="form-display show" id="login">
+                <h1>Login</h1>
+                <form action="" method="post" novalidate="">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="password" placeholder="Password" required="required" type="password">
+                                </div>
+                            </li>
+                            <li><input class="button-login" type="submit" value="Login"></li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="form-display hide" id="register">
+                <h1>Register</h1>
+                <form action="" method="post" novalidate="">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length="6,8" name="password" placeholder="Password" required="required" type="text">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <input class='email' name="email" placeholder="Email" required="required" type="email">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <label><input name="url" placeholder="Website link" required="required" type="url"></label>
+                                </div>
+                            </li>
+                            <li><input class="button-register" id='send' type="submit" value="Sign Up"></li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/validator.js"></script>
+    <script>
+        // initialize the validator function
+        validator.message['date'] = 'not a real date';
 
-	<div class="cd-signin-modal js-signin-modal">
-		<!-- this is the entire modal form, including the background -->
-		<div class="cd-signin-modal__container">
-			<!-- this is the container wrapper -->
-			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
-				<li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
-				<li><a href="#0" data-signin="signup" data-type="signup">New account</a></li>
-			</ul>
+        // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+        $('form')
+            .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+            .on('change', 'select.required', validator.checkField)
+            .on('keypress', 'input[required][pattern]', validator.keypress);
 
-			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login">
-				<!-- log in form -->
-				<form class="cd-signin-modal__form">
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace"
-							for="signin-email">E-mail</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="signin-email" type="email" placeholder="E-mail">
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
+        $('.multi.required')
+            .on('keyup blur', 'input', function() {
+                validator.checkField.apply($(this).siblings().last()[0]);
+            });
 
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace"
-							for="signin-password">Password</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="signin-password" type="text" placeholder="Password">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
+        // bind the validation to the form submit event
+        //$('#send').click('submit');//.prop('disabled', true);
 
-					<p class="cd-signin-modal__fieldset">
-						<input type="checkbox" id="remember-me" checked class="cd-signin-modal__input ">
-						<label for="remember-me">Remember me</label>
-					</p>
+        $('form').submit(function(e) {
+            e.preventDefault();
+            var submit = true;
+            // evaluate the form using generic validaing
+            if (!validator.checkAll($(this))) {
+                submit = false;
+            }
 
-					<p class="cd-signin-modal__fieldset">
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit"
-							value="Login">
-					</p>
-				</form>
-
-				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0"
-						data-signin="reset">Forgot your password?</a></p>
-			</div> <!-- cd-signin-modal__block -->
-
-			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup">
-				<!-- sign up form -->
-				<form class="cd-signin-modal__form">
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace"
-							for="signup-username">Username</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="signup-username" type="text" placeholder="Username">
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace"
-							for="signup-email">E-mail</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace"
-							for="signup-password">Password</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="signup-password" type="text" placeholder="Password">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
-						<input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
-						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding"
-							type="submit" value="Create account">
-					</p>
-				</form>
-			</div> <!-- cd-signin-modal__block -->
-
-			<div class="cd-signin-modal__block js-signin-modal-block" data-type="reset">
-				<!-- reset password form -->
-				<p class="cd-signin-modal__message">Lost your password? Please enter your email address. You will
-					receive a link to create a new password.</p>
-
-				<form class="cd-signin-modal__form">
-					<p class="cd-signin-modal__fieldset">
-						<label
-							class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace"
-							for="reset-email">E-mail</label>
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
-							id="reset-email" type="email" placeholder="E-mail">
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
-						<input
-							class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding"
-							type="submit" value="Reset password">
-					</p>
-				</form>
-
-				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back
-						to log-in</a></p>
-			</div> <!-- cd-signin-modal__block -->
-			<a href="#0" class="cd-signin-modal__close js-close">Close</a>
-		</div> <!-- cd-signin-modal__container -->
-	</div> <!-- cd-signin-modal -->
-
-	<script src="js/main.js"></script> <!-- Resource JavaScript -->
+            if (submit)
+                this.submit();
+            return false;
+        });
+    </script>
 </body>
 
 </html>
