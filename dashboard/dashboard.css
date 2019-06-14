@@ -14,7 +14,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    background: url('../img/low_contrast_linen_@2X.png');
 }
 
 article,
@@ -615,9 +616,6 @@ a {
 }
 
 .col,
-.half,
-.third,
-.threequarter,
 .quarter {
     float: left;
     width: 100%
@@ -652,6 +650,7 @@ a {
 }
 
 .col.s8 {
+    padding-top: 15px;
     width: 66.66666%
 }
 
@@ -682,23 +681,20 @@ a {
     .quarter {
         width: 24.99999%
     }
-    .col.m4,
-    .third {
+    .col.m4 {
         width: 33.33333%
     }
     .col.m5 {
         width: 41.66666%
     }
-    .col.m6,
-    .half {
+    .col.m6 {
         width: 49.99999%
     }
     .col.m7 {
         width: 58.33333%
     }
     .col.m8,
-    .col.m9,
-    .threequarter {
+    .col.m9 {
         width: 74.99999%
     }
     .col.m10 {
@@ -1022,12 +1018,9 @@ a {
 }
 
 .row-padding,
-.row-padding>.half,
-.row-padding>.third,
-.row-padding>.threequarter,
 .row-padding>.quarter,
 .row-padding>.col {
-    padding: 0 8px
+    padding: 8px 8px
 }
 
 .container,

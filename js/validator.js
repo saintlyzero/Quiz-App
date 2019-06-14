@@ -181,18 +181,6 @@ var validator = (function($) {
                 return false;
             }
         },
-        // url: function(a) {
-        //     // minimalistic URL validation
-        //     function testUrl(url) {
-        //         return /^(https?:\/\/)?([\w\d\-_]+\.+[A-Za-z]{2,})+\/?/.test(url);
-        //     }
-        //     if (!testUrl(a)) {
-        //         console.log(a);
-        //         alertTxt = a ? message.url : message.empty;
-        //         return false;
-        //     }
-        //     return true;
-        // },
         hidden: function(a) {
             if (lengthRange && a.length < lengthRange[0]) {
                 alertTxt = message.min;

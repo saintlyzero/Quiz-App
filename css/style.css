@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -19,7 +19,7 @@ body {
 .flat-design-form {
     background: #f58020;
     margin: 130px auto;
-    width: 400px;
+    width: 30%;
     height: auto;
     position: relative;
     font-family: 'Open Sans';
@@ -46,7 +46,7 @@ body {
 }
 
 span#login_icon {
-    width: 16px;
+    width: 15%;
     height: 16px;
     left: 8px;
     position: absolute;
@@ -55,7 +55,7 @@ span#login_icon {
 }
 
 span#signup_icon {
-    width: 16px;
+    width: 15%;
     height: 16px;
     left: 110px;
     position: absolute;
@@ -114,8 +114,7 @@ form {
 
 form input[type=text],
 form input[type=password],
-form input[type=email],
-form input[type=url] {
+form input[type=email] {
     width: 100%;
     outline: none;
     height: 40px;
@@ -239,7 +238,7 @@ form input[type=url] {
     color: #FFF;
     border-radius: 3px 4px 4px 3px;
     background-color: #ef3030;
-    max-width: 170px;
+    max-width: 100%;
     white-space: pre;
     position: absolute;
     left: -15px;
@@ -265,7 +264,7 @@ form input[type=url] {
     left: 0;
     opacity: 1;
     top: 5px;
-    left: 343px;
+    left: 100%;
     font-size: 12px;
     padding: 10px;
 }
