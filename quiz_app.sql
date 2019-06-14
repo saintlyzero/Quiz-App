@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 14, 2019 at 03:24 PM
+-- Generation Time: Jun 14, 2019 at 05:18 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -37,10 +37,33 @@ CREATE TABLE `admin_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `aptitude_question_set`
+-- Table structure for table `aptitude`
 --
 
-CREATE TABLE `aptitude_question_set` (
+CREATE TABLE `aptitude` (
+  `qid` int(11) NOT NULL,
+  `question` varchar(500) DEFAULT NULL,
+  `opt1` varchar(500) DEFAULT NULL,
+  `opt2` varchar(500) DEFAULT NULL,
+  `opt3` varchar(500) DEFAULT NULL,
+  `opt4` varchar(500) DEFAULT NULL,
+  `answer` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aptitude`
+--
+
+INSERT INTO `aptitude` (`qid`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `answer`) VALUES
+(1, 'what is what', 'a', 'b', 'c', 'd', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logical`
+--
+
+CREATE TABLE `logical` (
   `qid` int(11) NOT NULL,
   `question` varchar(500) DEFAULT NULL,
   `opt1` varchar(500) DEFAULT NULL,
@@ -53,26 +76,10 @@ CREATE TABLE `aptitude_question_set` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logical_question_set`
+-- Table structure for table `quantitative`
 --
 
-CREATE TABLE `logical_question_set` (
-  `qid` int(11) NOT NULL,
-  `question` varchar(500) DEFAULT NULL,
-  `opt1` varchar(500) DEFAULT NULL,
-  `opt2` varchar(500) DEFAULT NULL,
-  `opt3` varchar(500) DEFAULT NULL,
-  `opt4` varchar(500) DEFAULT NULL,
-  `answer` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `quantitative_question_set`
---
-
-CREATE TABLE `quantitative_question_set` (
+CREATE TABLE `quantitative` (
   `qid` int(11) NOT NULL,
   `question` varchar(500) DEFAULT NULL,
   `opt1` varchar(500) DEFAULT NULL,
@@ -99,6 +106,30 @@ CREATE TABLE `test_log` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `up`
+--
+
+CREATE TABLE `up` (
+  `up_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `category` varchar(30) DEFAULT NULL,
+  `score` varchar(50) DEFAULT NULL,
+  `qno` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `up`
+--
+
+INSERT INTO `up` (`up_id`, `user_id`, `category`, `score`, `qno`) VALUES
+(1, 1, 'logical', '10', 4),
+(2, 1, 'APTI', '50', 2),
+(3, 1, 'ABC', '50', 3),
+(4, 1, 'aptitude', '10', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_detail`
 --
 
@@ -108,6 +139,13 @@ CREATE TABLE `user_detail` (
   `user_email` varchar(50) DEFAULT NULL,
   `user_password` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_detail`
+--
+
+INSERT INTO `user_detail` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
+(1, 'abc', 'abc_a@gmail.com', 'pass');
 
 -- --------------------------------------------------------
 
@@ -137,21 +175,21 @@ ALTER TABLE `admin_detail`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `aptitude_question_set`
+-- Indexes for table `aptitude`
 --
-ALTER TABLE `aptitude_question_set`
+ALTER TABLE `aptitude`
   ADD PRIMARY KEY (`qid`);
 
 --
--- Indexes for table `logical_question_set`
+-- Indexes for table `logical`
 --
-ALTER TABLE `logical_question_set`
+ALTER TABLE `logical`
   ADD PRIMARY KEY (`qid`);
 
 --
--- Indexes for table `quantitative_question_set`
+-- Indexes for table `quantitative`
 --
-ALTER TABLE `quantitative_question_set`
+ALTER TABLE `quantitative`
   ADD PRIMARY KEY (`qid`);
 
 --
@@ -159,6 +197,12 @@ ALTER TABLE `quantitative_question_set`
 --
 ALTER TABLE `test_log`
   ADD PRIMARY KEY (`test_id`);
+
+--
+-- Indexes for table `up`
+--
+ALTER TABLE `up`
+  ADD PRIMARY KEY (`up_id`);
 
 --
 -- Indexes for table `user_detail`
@@ -183,21 +227,21 @@ ALTER TABLE `admin_detail`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `aptitude_question_set`
+-- AUTO_INCREMENT for table `aptitude`
 --
-ALTER TABLE `aptitude_question_set`
+ALTER TABLE `aptitude`
+  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `logical`
+--
+ALTER TABLE `logical`
   MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `logical_question_set`
+-- AUTO_INCREMENT for table `quantitative`
 --
-ALTER TABLE `logical_question_set`
-  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `quantitative_question_set`
---
-ALTER TABLE `quantitative_question_set`
+ALTER TABLE `quantitative`
   MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -207,10 +251,16 @@ ALTER TABLE `test_log`
   MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `up`
+--
+ALTER TABLE `up`
+  MODIFY `up_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `user_detail`
 --
 ALTER TABLE `user_detail`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_performance`
