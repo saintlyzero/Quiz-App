@@ -21,3 +21,15 @@ function nav_close() {
     mySidebar.style.display = "none";
     overlayBg.style.display = "none";
 }
+
+function leaderboard()
+{
+    document.getElementById("main-block").style.display = 'none';
+    document.getElementById("leaderboards-block").style.display = 'block';
+    
+}
+function dashboard()
+{
+    document.getElementById("main-block").style.display = 'block';
+    document.getElementById("leaderboards-block").style.display = 'none';
+}
