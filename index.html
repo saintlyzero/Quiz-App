@@ -20,45 +20,45 @@
             </ul>
             <div class="form-display show" id="login">
                 <h1>Login</h1>
-                <form action="" method="post" novalidate="">
+                <form action=""  novalidate="">
                     <fieldset>
                         <ul>
                             <li>
                                 <div class="item">
-                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                    <input data-validate-length-range="6" name="name" id="username" placeholder="Username" required="required" type="text">
                                 </div>
                             </li>
                             <li>
                                 <div class="item">
-                                    <input data-validate-length-range="6" name="password" placeholder="Password" required="required" type="password">
+                                    <input data-validate-length-range="6" name="password" id="password" placeholder="Password" required="required" type="password">
                                 </div>
                             </li>
-                            <li><input class="button-login" type="submit" value="Login"></li>
+                            <li><input class="button-login" type="button" value="Login"></li>
                         </ul>
                     </fieldset>
                 </form>
             </div>
             <div class="form-display hide" id="register">
                 <h1>Register</h1>
-                <form action="" method="post" novalidate="">
+                <form action=""  novalidate="">
                     <fieldset>
                         <ul>
                             <li>
                                 <div class="item">
-                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                    <input data-validate-length-range="6" name="name" id="register_username" placeholder="Username" required="required" type="text">
                                 </div>
                             </li>
                             <li>
                                 <div class="item">
-                                    <input data-validate-length="6,8" name="password" placeholder="Password" required="required" type="text">
+                                    <input data-validate-length="6,8" name="password" placeholder="Password" id="register_password" required="required" type="text">
                                 </div>
                             </li>
                             <li>
                                 <div class="item">
-                                    <input class='email' name="email" placeholder="Email" required="required" type="email">
+                                    <input class='email' name="email" placeholder="Email" id="register_email" required="required" type="email">
                                 </div>
                             </li>
-                            <li><input class="button-register" id='send' type="submit" value="Sign Up"></li>
+                            <li><input class="button-register" id='send' type="button" value="Sign Up"></li>
                         </ul>
                     </fieldset>
                 </form>
@@ -97,6 +97,78 @@
                 this.submit();
             return false;
         });
+    </script>
+
+
+<script>
+        $('.button-login').click(function(){
+            console.log($("#username").val());
+    $.ajax({
+    //url: 'http://localhost:3000/tasks',
+    url: 'http://localhost/quiz-app/login.php',
+    // url: 'login.php',
+    type: 'POST',
+    dataType:'json',
+    data: { "username": $("#username").val(),"password": $("#password").val() },
+    success: function(response) {  
+        console.log(response);
+        var res_json = JSON.parse(JSON.stringify(response));
+        if (res_json["status"] == 1)
+        {
+            document.cookie = "username="+res_json["username"];
+            console.log(res_json["username"]);
+            window.location = "dashboard/dashboard.html";
+        }
+        else
+        {
+           alert('Invalid Credentials!');
+        }
+
+    },
+    error: function(data){
+        console.log(data);
+       console.log("Error in api call.");
+    }
+});
+});
+    </script>
+    
+    
+
+
+
+
+<script>
+        $('.button-register').click(function(){
+            console.log($("#username").val());
+    $.ajax({
+    //url: 'http://localhost:3000/tasks',
+    url: 'http://localhost/quiz-app/register.php',
+    // url: 'login.php',
+    type: 'POST',
+    dataType:'json',
+    data: { "email":$("#register_email").val(),"username": $("#register_username").val(),"password": $("#register_password").val() },
+    success: function(response) {  
+        console.log(response);
+        //var res_json = JSON.parse(JSON.stringify(response));
+        var res_json = response;
+        if (res_json["status"] == 1)
+        {
+           alert('User Registered. Please login again.');
+           window.location = "index.html";
+        }
+        else
+        {
+           alert(res_json["message"]);
+        }
+
+    },
+    error: function(data){
+        console.log(data);
+       console.log("Error in api call of register.");
+    }
+});
+});
     </script>
 </body>
 

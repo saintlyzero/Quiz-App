@@ -34,7 +34,7 @@
                 <img src="../dashboard/image/avatar2.png" class="circle margin-right" style="width:46px">
             </div>
             <div class="col s8 bar">
-                <span>Welcome, <strong>Mike</strong></span><br>
+                <span>Welcome, <strong id="profile_name">Mike</strong></span><br>
             </div>
         </div>
         <hr>
@@ -66,7 +66,7 @@
                 <div class="container red padding-16">
                     <div class="left"><i class="fa fa-calculator xxxlarge"></i></div>
                     <div class="right">
-                        <h3>52</h3>
+                        <h3 id="quants">52</h3>
                     </div>
                     <div class="clear"></div>
                     <h4>Quants</h4>
@@ -76,7 +76,7 @@
                 <div class="container blue padding-16">
                     <div class="left"><i class="fa fa-language xxxlarge"></i></div>
                     <div class="right">
-                        <h3>99</h3>
+                        <h3 id="verbal">99</h3>
                     </div>
                     <div class="clear"></div>
                     <h4>Verbal</h4>
@@ -86,7 +86,7 @@
                 <div class="container teal padding-16">
                     <div class="left"><i class="fa fa-share-alt xxxlarge"></i></div>
                     <div class="right">
-                        <h3>23</h3>
+                        <h3 id="logic">23</h3>
                     </div>
                     <div class="clear"></div>
                     <h4>Logics</h4>
@@ -94,6 +94,57 @@
             </div>
         </div>
 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        <script>
+
+                function readCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0;i < ca.length;i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+                    return null;
+                }
+                                $(document).ready(function(){
+                                    console.log('before');
+                                    console.log(readCookie('username'));
+                          $("#profile_name").text(readCookie('username'));
+
+//console.log($("#profile_name").text("ANBC"));
+
+                                    $.ajax({
+                    url: 'http://localhost/quiz-app/getScore.php',
+                    type: 'POST',
+                    dataType:'json',
+                    data: { "username": readCookie('username') },
+                    success: function(response) {  
+                        console.log(response);
+                        var res_json = JSON.parse(JSON.stringify(response));
+                        if (res_json["status"] == 1)
+                        {
+                            $("#quants").text(res_json['quantitative_score']);
+                            $("#logic").text(res_json['logical_score']);
+                            $("#verbal").text(res_json['aptitude_score']);
+                        }
+                        else
+                        {
+                           console.log(res_json['message']);
+                        }
+                
+                    },
+                    error: function(data){
+                        console.log(data);
+                       console.log("Error in api call of get score for user.");
+                    }
+                });
+                
+                
+                        });
+                            </script> 
 
         <script src="dashboard.js"></script>
 
