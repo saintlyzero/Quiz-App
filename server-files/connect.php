@@ -1,4 +1,11 @@
 <?php 
+
+header('Access-Control-Allow-Origin: *'); 
+header("Access-Control-Allow-Credentials: true"); 
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS'); 
+header('Access-Control-Max-Age: 1000'); 
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -9,8 +16,8 @@ if (mysqli_connect_errno())
     echo "Failed to connect to database: " . mysqli_connect_error();
     
 }
-else
+/*else
 {
 	echo "Connection Established";
-}
+}*/
 ?> 

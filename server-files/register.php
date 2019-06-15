@@ -2,6 +2,13 @@
 
 include('connect.php');
 
+header('Access-Control-Allow-Origin: *'); 
+header("Access-Control-Allow-Credentials: true"); 
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS'); 
+header('Access-Control-Max-Age: 1000'); 
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
+
     $email=$_POST['email'];
     $username=$_POST['username'];
     $password=$_POST['password'];
@@ -10,7 +17,7 @@ include('connect.php');
 
     if($conn->query($sql)->num_rows > 0)
     {   
-        echo "User already Exists";
+        echo json_encode(array('status' => 0,'message' => 'User Already Exists.'));
     }
     else
     {
@@ -23,11 +30,11 @@ include('connect.php');
 
         if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) 
         {
-            echo "Registerd Successfully!";
+            echo json_encode(array('status' => 1));
         } 
         else 
         {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo json_encode(array('status' => 0,'message' =>'Error is DB '.$sql));
         }    
     }
     	

@@ -2,6 +2,12 @@
 
 include('connect.php');
 
+header('Access-Control-Allow-Origin: *'); 
+header("Access-Control-Allow-Credentials: true"); 
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS'); 
+header('Access-Control-Max-Age: 1000'); 
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
 
     $subset = 5;
     $sql = "select 
@@ -13,7 +19,6 @@ include('connect.php');
 
     $result = mysqli_query($conn,$sql);
     
-   
     $response = array();
 
     if(mysqli_num_rows($result)!=0)
@@ -31,6 +36,6 @@ include('connect.php');
     }
     else
     {
-        echo "No data";
+        json_encode(array('status' => 0,'message' => 'No data available'));
     }
 ?>

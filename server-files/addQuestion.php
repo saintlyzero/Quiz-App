@@ -2,6 +2,13 @@
 
 include('connect.php');
 
+header('Access-Control-Allow-Origin: *'); 
+header("Access-Control-Allow-Credentials: true"); 
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS'); 
+header('Access-Control-Max-Age: 1000'); 
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
+
     $question=$_POST['question'];
     $op1=$_POST['opt1'];
     $op2=$_POST['opt2'];
