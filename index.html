@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="robots" content="noindex,follow" />
-    <title>Create a Flat Login/Sign up Page with Validator jQuery Plugin</title>
+    <title>Login</title>
     <link href="css/style.css" media="screen" rel="stylesheet">
     <link href="css/reset.css" media="screen" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,700italic,800italic,400,300,600,800" rel='stylesheet' type='text/css'>
@@ -104,9 +104,9 @@
         $('.button-login').click(function(){
             console.log($("#username").val());
     $.ajax({
-    //url: 'http://localhost:3000/tasks',
+   
     url: 'http://localhost/quiz-app/login.php',
-    // url: 'login.php',
+ 
     type: 'POST',
     dataType:'json',
     data: { "username": $("#username").val(),"password": $("#password").val() },
@@ -117,7 +117,9 @@
         {
             document.cookie = "username="+res_json["username"];
             console.log(res_json["username"]);
-            window.location = "dashboard/dashboard.html";
+
+            window.location = "dashboard.html";
+
         }
         else
         {

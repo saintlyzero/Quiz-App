@@ -5,7 +5,9 @@ html {
 *,
 *:before,
 *:after {
-    box-sizing: inherit
+    box-sizing: inherit;
+    font-size: 20px;
+
 }
 
 html {
@@ -15,7 +17,8 @@ html {
 
 body {
     margin: 0;
-    background: url('../img/low_contrast_linen_@2X.png');
+    background: url('../img/backg.jpg');
+    
 }
 
 article,
@@ -807,6 +810,11 @@ a {
 /* leaderboards block */
 
 #leaderboards-block
+{
+    display: none;
+}
+/* Quiz Block */
+#quiz-block
 {
     display: none;
 }
