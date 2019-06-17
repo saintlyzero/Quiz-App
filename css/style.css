@@ -1,0 +1,270 @@
+/*= GENERAL STYLES
+--------------------------------------------------------*/
+
+body {
+    background: url('../img/low_contrast_linen_@2X.png');
+    color: white;
+    font-family: 'Open Sans';
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/*= TABS
+  --------------------------------------------------------*/
+
+.flat-design-form {
+    background: #f58020;
+    margin: 130px auto;
+    width: 30%;
+    height: auto;
+    position: relative;
+    font-family: 'Open Sans';
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+}
+
+#login {
+    padding-bottom: 20px;
+}
+
+#register {
+    background: #0DA1FF;
+    padding-bottom: 20px;
+}
+
+#login-tab {
+    background: #f58020;
+}
+
+#register-tab {
+    background: #0DA1FF;
+}
+
+span#login_icon {
+    width: 15%;
+    height: 16px;
+    left: 8px;
+    position: absolute;
+    background: url(../img/login.png)no-repeat;
+    display: block;
+}
+
+span#signup_icon {
+    width: 15%;
+    height: 16px;
+    left: 110px;
+    position: absolute;
+    background: url(../img/sign-in.png)no-repeat;
+    display: block;
+}
+
+.tabs {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.tabs li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tabs a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 15px 30px 15px 30px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+/*= FORMS
+  --------------------------------------------------------*/
+
+.form-display {
+    padding: 0 20px;
+    position: relative;
+}
+
+.form-display h1 {
+    font-size: 30px;
+    padding: 10px 0 20px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+form {
+    padding-right: 20px !important;
+}
+
+form input[type=text],
+form input[type=password],
+form input[type=email] {
+    width: 100%;
+    outline: none;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    background: #fff;
+    border: none;
+    color: #545454;
+    font-family: 'Open Sans';
+    font-size: 13px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+
+/*= BUTTON
+  --------------------------------------------------------*/
+
+.button-login {
+    display: block;
+    background: #0DA1FF;
+    padding: 10px 30px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Open Sans';
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-bottom: 2px solid #1B78B2;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #1B78B2;
+    box-shadow: inset 0 -2px #1B78B2;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+
+.button-login:hover {
+    background: #1B78B2;
+}
+
+.button-register {
+    display: block;
+    background: #f58020;
+    padding: 10px 30px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Open Sans';
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-bottom: 2px solid #c36518;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #c36518;
+    box-shadow: inset 0 -2px #c36518;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+
+.button-register:hover {
+    background: #fb7100;
+}
+
+.button-register:active {
+    background: #136899;
+}
+
+
+/*= PLACEHOLDER
+  --------------------------------------------------------*/
+
+ ::-webkit-input-placeholder {
+    font-size: 13px;
+    font-family: 'Open Sans';
+    color: #545454;
+}
+
+ :-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 13px;
+    font-family: 'Open Sans';
+    color: #545454;
+}
+
+ ::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 13px;
+    font-family: 'Open Sans';
+    color: #545454;
+}
+
+ :-ms-input-placeholder {
+    font-size: 13px;
+    font-family: 'Open Sans';
+    color: #545454;
+}
+
+
+/*= VALIDATION
+  --------------------------------------------------------*/
+
+.item {
+    position: relative;
+}
+
+.item .alert {
+    float: left;
+    margin: 0 0 0 20px;
+    padding: 3px 10px;
+    color: #FFF;
+    border-radius: 3px 4px 4px 3px;
+    background-color: #ef3030;
+    max-width: 100%;
+    white-space: pre;
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    z-index: 1;
+    transition: 0.15s ease-out;
+}
+
+.item .alert::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-color: transparent #ef3030 transparent transparent;
+    border-style: solid;
+    border-width: 11px 7px;
+    position: absolute;
+    top: 5px;
+    left: -10px;
+}
+
+.item.bad .alert {
+    left: 0;
+    opacity: 1;
+    top: 5px;
+    left: 100%;
+    font-size: 12px;
+    padding: 10px;
+}
