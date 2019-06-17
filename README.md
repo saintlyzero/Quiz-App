@@ -1,7 +1,7 @@
 # Quiz-App
 
-## Back-end: PHP MySQL
-## Front-end: HTML CSS JavaScript
+#### Back-end: PHP MySQL
+#### Front-end: HTML CSS JavaScript
 
 ![image](https://user-images.githubusercontent.com/17126310/59582921-5b06b980-90f7-11e9-9a49-ec04effb2866.png)
 ![image](https://user-images.githubusercontent.com/17126310/59582928-60fc9a80-90f7-11e9-8bd8-036036e21410.png)
