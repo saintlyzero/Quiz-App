@@ -1,4 +1,11 @@
 <?php
+
+/*
+    API to validate a user
+    Request Parameters: username, password
+    Response: Question, JSON - status
+*/
+
 include('connect.php');
 
 header('Access-Control-Allow-Origin: *'); 

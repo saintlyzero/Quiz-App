@@ -21,7 +21,7 @@ function nav_close() {
     mySidebar.style.display = "none";
     overlayBg.style.display = "none";
 }
-
+// Function that displays the leaderboards tab and hides others
 function leaderboard()
 {
     document.getElementById("main-block").style.display = 'none';
@@ -29,12 +29,14 @@ function leaderboard()
     document.getElementById("quiz-block").style.display = 'none';
 
 }
+// Function that displays the Dashboard tab and hides others
 function dashboard()
 {
     document.getElementById("main-block").style.display = 'block';
     document.getElementById("leaderboards-block").style.display = 'none';
     document.getElementById("quiz-block").style.display = 'none';
 }
+// Function that displays the Quiz tab and hides others
 function loadQuiz(category)
 {
     document.getElementById("main-block").style.display = 'none';

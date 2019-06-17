@@ -1,4 +1,10 @@
 <?php
+/*
+    API to get score of all topics of a user from the database
+    Request Parameters: username
+    Response: Question, JSON - all three scores of the user
+*/
+
 include('connect.php');
 
 header('Access-Control-Allow-Origin: *'); 

@@ -1,5 +1,10 @@
 <?php
-
+/*
+    Admin side API to add a question to the database
+    Request Parameters: Question, option1, option2, option3, option4,
+                        answer, category of the question
+    Response: Success of the request
+*/
 include('connect.php');
 
 header('Access-Control-Allow-Origin: *'); 

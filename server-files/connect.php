@@ -1,4 +1,10 @@
 <?php 
+/*
+    Common connection API to connect to the database.
+    Called by every other API
+    Request Parameters: none
+    Response: Success of the request
+*/
 
 header('Access-Control-Allow-Origin: *'); 
 header("Access-Control-Allow-Credentials: true"); 

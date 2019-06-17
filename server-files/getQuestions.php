@@ -1,5 +1,12 @@
 <?php
 
+/*
+    API to get questions from the database
+    Request Parameters: username, category of the question
+    Response: Question, JSON - option1, option2, option3, option4,
+                        answer, category of the question, questionID
+*/
+
 include('connect.php');
 
 

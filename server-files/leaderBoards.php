@@ -1,5 +1,11 @@
 <?php
 
+/*
+    API to get total scores of all the users from the database
+    Request Parameters: none
+    Response: username, total score
+*/
+
 include('connect.php');
 
 header('Access-Control-Allow-Origin: *'); 

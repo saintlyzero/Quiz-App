@@ -1,5 +1,9 @@
 <?php
-
+/*
+    API to update scores after a user attempts a quiz
+    Request Parameters: username, score, last questionNumber attempted by user, category of the test
+    Response: Question, JSON - status
+*/
 include('connect.php');
 
 header('Access-Control-Allow-Origin: *'); 
