@@ -2,6 +2,7 @@
 #quiz {
     text-indent: 10px;
     display:none;
+    padding-left: 10%; 
 }
 
 .button {
@@ -31,8 +32,13 @@ button {
     text-decoration: none;
     color: black;
 }
+#question
+{
+    padding-left: 10%;
+}
 
 #container {
+    
     width:50%;
     margin:auto;
     padding: 0 25px 40px 10px;
