@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2019 at 07:40 AM
+-- Generation Time: Jun 18, 2019 at 02:38 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -148,7 +148,12 @@ INSERT INTO `user_detail` (`user_id`, `user_name`, `user_email`, `user_password`
 (1, 'abc', 'abc_a@gmail.com', 'pass'),
 (2, 'xyz', 'zyxasdasd', 'xyz'),
 (3, 'xyz12', 'asd', 'xyz'),
-(5, 'lmn', 'shubham@.com', 'lmn');
+(5, 'lmn', 'shubham@.com', 'lmn'),
+(6, 'uhuhuh', 'abc@gmail.com', 'uhuhuh'),
+(7, 'uhuhuhsdsd', 'abc@gmail.com', 'uhuhuh'),
+(8, 's', '', ''),
+(9, 'demo', 'demo', 'demo'),
+(10, 'shubham', 'shubham.dal', 'shubham');
 
 -- --------------------------------------------------------
 
@@ -172,9 +177,14 @@ CREATE TABLE `user_performance` (
 --
 
 INSERT INTO `user_performance` (`up_id`, `user_name`, `logical_qno`, `logical_score`, `quantitative_qno`, `quantitative_score`, `aptitude_qno`, `aptitude_score`) VALUES
-(1, 'abc', 1, '0', 99, '88', 122, '50'),
+(1, 'abc', 1, '0', 1, '88', 1, '50'),
 (2, 'xyz', 1, '10', 1, '15', 1, '0'),
-(4, 'lmn', 1, '0', 199, '188', 1, '0');
+(4, 'lmn', 1, '0', 1, '90', 7, '11'),
+(5, 'uhuhuh', 1, '0', 1, '0', 1, '0'),
+(6, 'uhuhuhsdsd', 1, '0', 1, '0', 1, '0'),
+(7, 's', 1, '0', 1, '0', 1, '0'),
+(8, 'demo', 1, '0', 1, '0', 1, '0'),
+(9, 'shubham', 1, '0', 1, '0', 1, '0');
 
 --
 -- Indexes for dumped tables
@@ -260,13 +270,13 @@ ALTER TABLE `test_log`
 -- AUTO_INCREMENT for table `user_detail`
 --
 ALTER TABLE `user_detail`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_performance`
 --
 ALTER TABLE `user_performance`
-  MODIFY `up_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `up_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
