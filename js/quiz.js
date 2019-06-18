@@ -1,7 +1,28 @@
 (function() {
 
+const onResolved = (resolvedValue) => console.log(resolvedValue);
+  
     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 var rQuestions;
+  //   $.ajax({
+  //     url: 'http://localhost/quiz-app/getQuestions.php',
+  //     type: 'POST',
+  //     //dataType:'json',
+  //     data: { "username": readCookie('username'), "topic": "aptitude" },
+  //     success: function(response) {  
+  //         //console.log(response);
+  //          rQuestions = JSON.parse(JSON.stringify(response));
+  //          console.log("myqstns "+rQuestions);
+
+        
+  //     },
+  //     error: function(data){
+  //         console.log(data);
+  //        console.log("Error in api call of get score for user.");
+  //     }
+  // });
+
+  const myPromise = new Promise((resolve, reject) => {
     $.ajax({
       url: 'http://localhost/quiz-app/getQuestions.php',
       type: 'POST',
@@ -11,7 +32,7 @@ var rQuestions;
           //console.log(response);
            rQuestions = JSON.parse(JSON.stringify(response));
            console.log("myqstns "+rQuestions);
-
+          resolve(rQuestions);
         
       },
       error: function(data){
@@ -19,8 +40,14 @@ var rQuestions;
          console.log("Error in api call of get score for user.");
       }
   });
+});
 
-  
+myPromise.then((resolvedValue) => {
+  console.log("resolved "+resolvedValue);
+}, (error) => {
+  console.log(error);
+});
+
     var questions = [{"qid":"2","question":"what is 2+2","choices":["4","5","8","19"],"correctAnswer":"0"},{"qid":"4","question":"What is 7+9","choices":["14","16","89","77"],"correctAnswer":"1"},{"qid":"5","question":"What is 2+4","choices":["54","916","989","6"],"correctAnswer":"3"},{"qid":"6","question":"What is 1+19","choices":["4454","22916","20","12797"],"correctAnswer":"3"},{"qid":"7","question":"What is 99 - 99","choices":["854","0","8989","8797"],"correctAnswer":"1"}];
     
     var questionCounter = 0; //Tracks question number
